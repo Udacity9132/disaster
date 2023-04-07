@@ -55,6 +55,9 @@ def clean_data(df):
 
     # drop 'child_alone' column since it only has 0 values
     df = df.drop('child_alone', axis = 1)
+    
+    # convert 'related' category values to 0 or 1
+    df['related'] = df['related'].astype('str').str.replace('2', '1')
 
     return df
 
