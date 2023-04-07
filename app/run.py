@@ -26,9 +26,16 @@ def tokenize(text):
 
     return clean_tokens
 
-# load data
-#engine = create_engine('sqlite:///{}'.format('/Users/bepresent/Desktop/disaster/data/DisasterResponse.db'))
-#df = pd.read_sql('DisasterResponse', engine)
+'''
+
+correct code, but it doesn't work on my computer and gives an AttributeError: 'OptionEngine' object has no attribute 'execute'
+engine = create_engine('sqlite:///{}'.format('data/DisasterResponse.db'))
+df = pd.read_sql('DisasterResponse', engine)
+
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+Background on this error at: https://sqlalche.me/e/20/e3q8
+'''
+
 
 engine = create_engine('sqlite:///{}'.format('/Users/bepresent/Desktop/disaster/data/DisasterResponse.db'))
 df = pd.DataFrame(engine.connect().execute(text("SELECT * FROM DisasterResponse")).fetchall())
